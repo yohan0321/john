@@ -10,9 +10,8 @@ int main() {
     char line[MAXLINE];
     int c, except = 0, number = 0, reverse = 0, start = -1, end = -1, found = 0;
 
-    // 可记 颇教
     while ((c = getchar()) != EOF && c != '\n') {
-        if (c == '-') { // 可记 矫累
+        if (c == '-'){
             while ((c = getchar()) != EOF && c != ' ') { // 可记 佬扁
                 switch (c) {
                 case 'x': 
@@ -45,25 +44,6 @@ int main() {
         return -1;
     }
 
-    // 涝仿 佬扁 棺 贸府
-    int lineno = 0;
-    while (my_getline(line, MAXLINE) > 0) {
-        lineno++;
-        int condition_met = 0;
-        if (reverse) {
-            if (lineno >= start && lineno <= end) condition_met = 1;
-        }
-        else {
-            if (lineno >= start && lineno <= end) condition_met = 1;
-        }
-        if (condition_met) {
-            if (number) printf("%ld:", lineno);
-            printf("%s", line);
-            found++;
-        }
-    }
-    return found;
-}
 
 int my_getline(char* line, int max) {
     int c, i;
