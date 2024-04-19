@@ -23,10 +23,6 @@ int main() {
                 }
             }
         }
-        else if (isdigit(c)) { 
-            ungetc(c, stdin);
-            scanf_s("%d %d", &start, &end);
-        }
         else {
             printf("Usage: find -r start end\n");
             return -1;
@@ -37,16 +33,3 @@ int main() {
         printf("Usage: find -r start end\n");
         return -1;
     }
-
-
-int my_getline(char* line, int max) {
-    int c, i;
-    for (i = 0; i < max - 1 && (c = getchar()) != EOF && c != '\n'; ++i)
-        line[i] = c;
-    if (c == '\n') {
-        line[i] = c;
-        ++i;
-    }
-    line[i] = '\0';
-    return i;
-}
