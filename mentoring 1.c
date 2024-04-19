@@ -8,18 +8,12 @@ int my_getline(char* line, int max);
 
 int main() {
     char line[MAXLINE];
-    int c, except = 0, number = 0, reverse = 0, start = -1, end = -1, found = 0;
+    int c, reverse = 0, start = -1, end = -1, found = 0;
 
     while ((c = getchar()) != EOF && c != '\n') {
         if (c == '-'){
             while ((c = getchar()) != EOF && c != ' ') { // 옵션 읽기
                 switch (c) {
-                case 'x': 
-                    except = 1;
-                    break;
-                case 'n': 
-                    number = 1; 
-                    break;
                 case 'r': 
                     reverse = 1;
                     break;
@@ -29,18 +23,18 @@ int main() {
                 }
             }
         }
-        else if (isdigit(c)) { // 숫자 읽기
+        else if (isdigit(c)) { 
             ungetc(c, stdin);
             scanf_s("%d %d", &start, &end);
         }
         else {
-            printf("Usage: find -x -n -r start end\n");
+            printf("Usage: find -r start end\n");
             return -1;
         }
     }
 
     if (reverse && (start == -1 || end == -1)) {
-        printf("Usage: find -x -n -r start end\n");
+        printf("Usage: find -r start end\n");
         return -1;
     }
 
